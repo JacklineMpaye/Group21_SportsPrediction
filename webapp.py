@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
 import pickle
+from urllib.request import urlopen
 
-loaded_model = pickle.load(open('best_model.pkl', 'rb'))
+loaded_model = pickle.load(urlopen('https://github.com/Priscile2/Group21_SportsPrediction/releases/download/v0.1/best_model.pkl'))
 scaler = pickle.load(open('scaler.pkl', 'rb') )
 
 # Create a Streamlit app
@@ -55,5 +56,3 @@ if button:
     prediction = loaded_model.predict(scaled_input)
     st.write(f"The player rating is {int(prediction[0])}")
     st.write(f"The confidence score of the model is 92%")
-    
-    
